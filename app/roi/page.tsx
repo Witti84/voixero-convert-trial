@@ -58,13 +58,16 @@ export default function RoiPage() {
     <main className="roi-page">
       <header className="roi-header">
         <div className="roi-container roi-nav">
-          <Link href="/" className="roi-brand">
-            <span className="roi-brand-mark">V</span>
-            <span>
-              VOIXERO
-              <small>CONVERT</small>
-            </span>
-          </Link>
+<Link href="/" className="roi-brand">
+  <Image
+    src="/voixero-logo.png"
+    alt="Voixero"
+    width={160}
+    height={43}
+    className="roi-logo"
+    priority
+  />
+</Link>
 
           <Link href="/" className="roi-back">
             ← Zurück zu Convert
