@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { FormEvent, useState } from "react";
 
 export default function Home() {
@@ -56,10 +55,17 @@ export default function Home() {
       setStatus({
         type: "success",
         message:
-          "Vielen Dank! Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns kurzfristig bei Ihnen.",
+          "Vielen Dank! Ihre Anfrage wurde erfolgreich Ã¼bermittelt. Wir melden uns kurzfristig bei Ihnen.",
       });
 
       form.reset();
+
+      window.setTimeout(() => {
+        setStatus({
+          type: null,
+          message: "",
+        });
+      }, 15000);
     } catch (error) {
       setStatus({
         type: "error",
@@ -83,12 +89,9 @@ export default function Home() {
             className="brand"
             aria-label="Voixero"
           >
-            <Image
+            <img
               src="/voixero-logo.png"
               alt="Voixero"
-              width={181}
-              height={37}
-              priority
               className="voixero-logo"
             />
           </a>
@@ -98,7 +101,7 @@ export default function Home() {
             <a href="#trial">Business Trial</a>
             <a href="#kontakt">Kontakt</a>
             <a href="https://www.voixero.com/#/convert">
-              Voixero Convert ↗
+              Voixero Convert â†—
             </a>
           </div>
 
@@ -127,21 +130,21 @@ export default function Home() {
 
             <p className="hero-text">
               Finden Sie heraus, wie sichtbar Ihr Unternehmen in ChatGPT,
-              Gemini &amp; Co. wirklich ist – und verbessern Sie Ihre
+              Gemini &amp; Co. wirklich ist â€“ und verbessern Sie Ihre
               AI Visibility systematisch.
             </p>
 
             <div className="hero-actions">
               <a href="#kontakt" className="button button-primary">
                 Business Trial starten
-                <span>→</span>
+                <span>â†’</span>
               </a>
 
               <a
                 href="https://www.voixero.com/#/convert"
                 className="text-link"
               >
-                Mehr über Voixero Convert ↗
+                Mehr Ã¼ber Voixero Convert â†—
               </a>
             </div>
 
@@ -152,12 +155,12 @@ export default function Home() {
               </div>
 
               <div>
-                <strong>CHF 448.–</strong>
+                <strong>CHF 448.â€“</strong>
                 <span>Total zzgl. MwSt.</span>
               </div>
 
               <div>
-                <strong>Keine Verlängerung</strong>
+                <strong>Keine VerlÃ¤ngerung</strong>
                 <span>endet automatisch</span>
               </div>
             </div>
@@ -191,7 +194,7 @@ export default function Home() {
                   <strong>Sehr gute Sichtbarkeit</strong>
                   <p>
                     Ihre Marke wird in relevanten KI-Antworten zunehmend
-                    berücksichtigt.
+                    berÃ¼cksichtigt.
                   </p>
                 </div>
               </div>
@@ -200,19 +203,19 @@ export default function Home() {
                 <div>
                   <span>TOP-5 APPEARANCE</span>
                   <strong>68%</strong>
-                  <small className="positive">↑ 12%</small>
+                  <small className="positive">â†‘ 12%</small>
                 </div>
 
                 <div>
                   <span>SHARE OF VOICE</span>
                   <strong>34%</strong>
-                  <small className="positive">↑ 8%</small>
+                  <small className="positive">â†‘ 8%</small>
                 </div>
 
                 <div>
                   <span>AI MENTIONS</span>
                   <strong>142</strong>
-                  <small className="positive">↑ 21</small>
+                  <small className="positive">â†‘ 21</small>
                 </div>
               </div>
 
@@ -230,7 +233,7 @@ export default function Home() {
             </div>
 
             <div className="floating-card">
-              <span className="floating-icon">↗</span>
+              <span className="floating-icon">â†—</span>
 
               <div>
                 <small>SICHTBARKEIT</small>
@@ -252,7 +255,7 @@ export default function Home() {
 
             <h2>
               AI Visibility.
-              <span> Einfach erklärt.</span>
+              <span> Einfach erklÃ¤rt.</span>
             </h2>
 
             <p>
@@ -278,7 +281,7 @@ export default function Home() {
                   src="/voixero-tryconvert.mp4"
                   type="video/mp4"
                 />
-                Ihr Browser unterstützt die Videowiedergabe nicht.
+                Ihr Browser unterstÃ¼tzt die Videowiedergabe nicht.
               </video>
             </div>
           </div>
@@ -289,7 +292,7 @@ export default function Home() {
             </span>
 
             <a href="#kontakt">
-              Business Trial starten →
+              Business Trial starten â†’
             </a>
           </div>
         </div>
@@ -310,7 +313,7 @@ export default function Home() {
             <p>
               Ihre Kunden fragen zunehmend KI-Systeme nach Produkten,
               Dienstleistern und Empfehlungen. Convert zeigt Ihnen, ob Ihr
-              Unternehmen in diesen Antworten vorkommt – und warum.
+              Unternehmen in diesen Antworten vorkommt â€“ und warum.
             </p>
           </div>
 
@@ -318,7 +321,7 @@ export default function Home() {
             <Feature
               number="01"
               title="Sichtbarkeit messen"
-              text="Erkennen Sie auf einen Blick, wie häufig und wie prominent Ihre Marke in relevanten KI-Antworten erscheint."
+              text="Erkennen Sie auf einen Blick, wie hÃ¤ufig und wie prominent Ihre Marke in relevanten KI-Antworten erscheint."
             />
 
             <Feature
@@ -330,13 +333,13 @@ export default function Home() {
             <Feature
               number="03"
               title="Potenziale erkennen"
-              text="Convert identifiziert Themen, Prompts und Inhalte, bei denen Sie Ihre AI Visibility gezielt verbessern können."
+              text="Convert identifiziert Themen, Prompts und Inhalte, bei denen Sie Ihre AI Visibility gezielt verbessern kÃ¶nnen."
             />
 
             <Feature
               number="04"
               title="Fortschritt verfolgen"
-              text="Verfolgen Sie Veränderungen kontinuierlich und erkennen Sie, welche Optimierungen tatsächlich Wirkung zeigen."
+              text="Verfolgen Sie VerÃ¤nderungen kontinuierlich und erkennen Sie, welche Optimierungen tatsÃ¤chlich Wirkung zeigen."
             />
           </div>
 
@@ -346,7 +349,7 @@ export default function Home() {
               className="convert-link"
             >
               Voixero Convert im Detail kennenlernen
-              <span>→</span>
+              <span>â†’</span>
             </a>
           </div>
         </div>
@@ -369,7 +372,7 @@ export default function Home() {
             <p>
               Convert macht die bislang unsichtbare Welt der KI-Suche
               messbar. Sie erhalten nicht nur einen Score, sondern konkrete
-              Ansatzpunkte für Ihre nächsten Optimierungen.
+              Ansatzpunkte fÃ¼r Ihre nÃ¤chsten Optimierungen.
             </p>
           </div>
 
@@ -383,7 +386,7 @@ export default function Home() {
             <Step
               number="2"
               title="KI-Antworten beobachten"
-              text="Relevante Prompts werden über führende AI-Plattformen hinweg analysiert."
+              text="Relevante Prompts werden Ã¼ber fÃ¼hrende AI-Plattformen hinweg analysiert."
             />
 
             <Step
@@ -395,7 +398,7 @@ export default function Home() {
             <Step
               number="4"
               title="Sichtbarkeit steigern"
-              text="Sie erhalten konkrete Empfehlungen und können die Entwicklung fortlaufend messen."
+              text="Sie erhalten konkrete Empfehlungen und kÃ¶nnen die Entwicklung fortlaufend messen."
             />
           </div>
         </div>
@@ -411,23 +414,23 @@ export default function Home() {
 
             <h2>
               3 Monate Convert Business.
-              <span> Ohne automatische Verlängerung.</span>
+              <span> Ohne automatische VerlÃ¤ngerung.</span>
             </h2>
 
             <p>
               Nutzen Sie Convert drei Monate im Business-Paket und finden Sie
-              heraus, welches Potenzial AI Visibility für Ihr Unternehmen hat.
+              heraus, welches Potenzial AI Visibility fÃ¼r Ihr Unternehmen hat.
             </p>
 
             <div className="no-renew">
-              <span>✓</span>
+              <span>âœ“</span>
 
               <div>
-                <strong>Keine automatische Verlängerung</strong>
+                <strong>Keine automatische VerlÃ¤ngerung</strong>
                 <p>
                   Nach drei Monaten endet der Trial automatisch. Sie
                   entscheiden selbst, ob Sie Convert anschliessend weiter
-                  nutzen möchten.
+                  nutzen mÃ¶chten.
                 </p>
               </div>
             </div>
@@ -449,7 +452,7 @@ export default function Home() {
                   <strong>Convert Business Trial</strong>
                   <span>3 Monate</span>
                 </div>
-                <strong>CHF 349.–</strong>
+                <strong>CHF 349.â€“</strong>
               </div>
 
               <div className="price-row">
@@ -457,7 +460,7 @@ export default function Home() {
                   <strong>Setup</strong>
                   <span>einmalig</span>
                 </div>
-                <strong>CHF 99.–</strong>
+                <strong>CHF 99.â€“</strong>
               </div>
             </div>
 
@@ -470,7 +473,7 @@ export default function Home() {
               <div className="total-number">
                 <span>CHF</span>
                 <strong>448</strong>
-                <span>.–</span>
+                <span>.â€“</span>
               </div>
             </div>
 
@@ -478,27 +481,27 @@ export default function Home() {
 
             <ul className="check-list">
               <li>
-                <span>✓</span>
+                <span>âœ“</span>
                 Global Visibility Score
               </li>
               <li>
-                <span>✓</span>
+                <span>âœ“</span>
                 AI Visibility Monitoring
               </li>
               <li>
-                <span>✓</span>
+                <span>âœ“</span>
                 Wettbewerbsanalyse
               </li>
               <li>
-                <span>✓</span>
+                <span>âœ“</span>
                 Relevante Prompts &amp; Suchintentionen
               </li>
               <li>
-                <span>✓</span>
+                <span>âœ“</span>
                 Optimierungsempfehlungen
               </li>
               <li>
-                <span>✓</span>
+                <span>âœ“</span>
                 Entwicklung &amp; Fortschritt messen
               </li>
             </ul>
@@ -508,11 +511,11 @@ export default function Home() {
               className="button button-primary button-full"
             >
               Business Trial starten
-              <span>→</span>
+              <span>â†’</span>
             </a>
 
             <small className="price-footer">
-              CHF 448.– zzgl. MwSt. · keine automatische Verlängerung
+              CHF 448.â€“ zzgl. MwSt. Â· keine automatische VerlÃ¤ngerung
             </small>
           </div>
         </div>
@@ -531,30 +534,30 @@ export default function Home() {
 
             <p>
               Senden Sie uns Ihre Unternehmensdaten. Wir bereiten Ihren
-              Convert-Zugang vor und melden uns für die nächsten Schritte
+              Convert-Zugang vor und melden uns fÃ¼r die nÃ¤chsten Schritte
               bei Ihnen.
             </p>
 
             <div className="contact-offer">
               <div>
-                <span>Convert Business · 3 Monate</span>
-                <strong>CHF 349.–</strong>
+                <span>Convert Business Â· 3 Monate</span>
+                <strong>CHF 349.â€“</strong>
               </div>
 
               <div>
                 <span>Einmaliges Setup</span>
-                <strong>CHF 99.–</strong>
+                <strong>CHF 99.â€“</strong>
               </div>
 
               <div className="contact-offer-total">
                 <span>Total zzgl. MwSt.</span>
-                <strong>CHF 448.–</strong>
+                <strong>CHF 448.â€“</strong>
               </div>
             </div>
 
             <div className="contact-security">
-              <span>✓</span>
-              Keine automatische Verlängerung
+              <span>âœ“</span>
+              Keine automatische VerlÃ¤ngerung
             </div>
           </div>
 
@@ -563,23 +566,23 @@ export default function Home() {
               <span>BUSINESS TRIAL</span>
               <h3>Ihre Unternehmensdaten</h3>
               <p>
-                Füllen Sie das Formular aus und wir kümmern uns um den Rest.
+                FÃ¼llen Sie das Formular aus und wir kÃ¼mmern uns um den Rest.
               </p>
             </div>
 
             {status.type === "success" ? (
               <div className="form-success" role="status">
-                <div className="form-success-icon">✓</div>
+                <div className="form-success-icon">âœ“</div>
 
-                <h3>Vielen Dank für Ihre Anfrage!</h3>
+                <h3>Vielen Dank fÃ¼r Ihre Anfrage!</h3>
 
                 <p>{status.message}</p>
 
                 <div className="form-success-summary">
                   <strong>Voixero Convert Business Trial</strong>
                   <span>
-                    3 Monate · CHF 448.– zzgl. MwSt. · keine automatische
-                    Verlängerung
+                    3 Monate Â· CHF 448.â€“ zzgl. MwSt. Â· keine automatische
+                    VerlÃ¤ngerung
                   </span>
                 </div>
               </div>
@@ -597,7 +600,7 @@ export default function Home() {
                   }}
                 >
                   <label htmlFor="website_check">
-                    Dieses Feld nicht ausfüllen
+                    Dieses Feld nicht ausfÃ¼llen
                   </label>
 
                   <input
@@ -649,7 +652,7 @@ export default function Home() {
 
                 <div className="form-field">
                   <label htmlFor="email">
-                    Geschäftliche E-Mail *
+                    GeschÃ¤ftliche E-Mail *
                   </label>
 
                   <input
@@ -715,7 +718,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Datenschutzerklärung
+                      DatenschutzerklÃ¤rung
                     </a>{" "}
                     gelesen und stimme der Verarbeitung meiner Angaben zur
                     Kontaktaufnahme zu.
@@ -737,20 +740,20 @@ export default function Home() {
                   disabled={isSending}
                 >
                   {isSending
-                    ? "Anfrage wird gesendet …"
-                    : "Business Trial für CHF 448.– anfragen"}
+                    ? "Anfrage wird gesendet â€¦"
+                    : "Business Trial fÃ¼r CHF 448.â€“ anfragen"}
 
-                  {!isSending && <span>→</span>}
+                  {!isSending && <span>â†’</span>}
                 </button>
 
                 <div className="form-price-note">
-                  Setup CHF 99.– + Convert Business Trial CHF 349.–
+                  Setup CHF 99.â€“ + Convert Business Trial CHF 349.â€“
                   <br />
-                  Total CHF 448.– zzgl. MwSt.
+                  Total CHF 448.â€“ zzgl. MwSt.
                 </div>
 
                 <div className="form-no-renew">
-                  Keine automatische Verlängerung.
+                  Keine automatische VerlÃ¤ngerung.
                 </div>
               </form>
             )}
@@ -777,9 +780,9 @@ export default function Home() {
               </summary>
 
               <p>
-                Der dreimonatige Convert Business Trial kostet CHF 349.–.
-                Hinzu kommen einmalige Setup-Kosten von CHF 99.–. Der
-                Gesamtpreis beträgt somit CHF 448.– zzgl. MwSt.
+                Der dreimonatige Convert Business Trial kostet CHF 349.â€“.
+                Hinzu kommen einmalige Setup-Kosten von CHF 99.â€“. Der
+                Gesamtpreis betrÃ¤gt somit CHF 448.â€“ zzgl. MwSt.
               </p>
             </details>
 
@@ -790,8 +793,8 @@ export default function Home() {
 
               <p>
                 Der Trial endet automatisch. Es gibt keine automatische
-                Verlängerung. Sie entscheiden selbst, ob Sie Convert
-                anschliessend weiter nutzen möchten.
+                VerlÃ¤ngerung. Sie entscheiden selbst, ob Sie Convert
+                anschliessend weiter nutzen mÃ¶chten.
               </p>
             </details>
 
@@ -808,24 +811,24 @@ export default function Home() {
 
             <details>
               <summary>
-                Für welche Unternehmen eignet sich Convert?
+                FÃ¼r welche Unternehmen eignet sich Convert?
               </summary>
 
               <p>
-                Convert eignet sich für Unternehmen, die verstehen und
-                verbessern möchten, wie ihre Marke, Produkte und Leistungen
-                in KI-gestützten Such- und Empfehlungssystemen wahrgenommen
+                Convert eignet sich fÃ¼r Unternehmen, die verstehen und
+                verbessern mÃ¶chten, wie ihre Marke, Produkte und Leistungen
+                in KI-gestÃ¼tzten Such- und Empfehlungssystemen wahrgenommen
                 werden.
               </p>
             </details>
 
             <details>
               <summary>
-                Welche KI-Plattformen werden berücksichtigt?
+                Welche KI-Plattformen werden berÃ¼cksichtigt?
               </summary>
 
               <p>
-                Convert analysiert relevante Antworten führender
+                Convert analysiert relevante Antworten fÃ¼hrender
                 KI-Plattformen. Der konkrete Umfang kann je nach Analyse und
                 Produktumfang variieren.
               </p>
@@ -838,23 +841,23 @@ export default function Home() {
       <section className="final-cta">
         <div className="container final-cta-inner">
           <span className="section-kicker">
-            BEREIT FÜR MEHR SICHTBARKEIT?
+            BEREIT FÃœR MEHR SICHTBARKEIT?
           </span>
 
           <h2>
             Finden Sie heraus,
             <br />
-            <span>was KI über Ihr Unternehmen weiss.</span>
+            <span>was KI Ã¼ber Ihr Unternehmen weiss.</span>
           </h2>
 
           <a href="#kontakt" className="button button-primary">
             Convert Business Trial starten
-            <span>→</span>
+            <span>â†’</span>
           </a>
 
           <p>
-            CHF 349.– Trial + CHF 99.– Setup · Total CHF 448.– zzgl. MwSt.
-            · keine automatische Verlängerung
+            CHF 349.â€“ Trial + CHF 99.â€“ Setup Â· Total CHF 448.â€“ zzgl. MwSt.
+            Â· keine automatische VerlÃ¤ngerung
           </p>
         </div>
       </section>
@@ -867,16 +870,14 @@ export default function Home() {
             className="brand footer-brand"
             aria-label="Voixero"
           >
-            <Image
+            <img
               src="/voixero-logo.png"
               alt="Voixero"
-              width={145}
-              height={30}
               className="voixero-logo footer-logo"
             />
           </a>
 
-          <p>© 2026 Voixero AG. All rights reserved.</p>
+          <p>Â© 2026 Voixero AG. All rights reserved.</p>
 
           <div className="footer-links">
             <a href="https://www.voixero.com/#/convert">
@@ -926,7 +927,7 @@ function Feature({
     <article className="feature-card">
       <span className="feature-number">{number}</span>
 
-      <div className="feature-icon">✦</div>
+      <div className="feature-icon">âœ¦</div>
 
       <h3>{title}</h3>
 

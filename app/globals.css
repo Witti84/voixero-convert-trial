@@ -1284,13 +1284,15 @@ footer {
     min-height: 70px;
   }
 
-  .voixero-logo {
-    width: 145px;
-  }
+.voixero-logo {
+  width: 145px;
+  height: auto;
+}
 
-  .footer-logo {
-    width: 125px;
-  }
+.footer-logo {
+  width: 125px;
+  height: auto;
+}
 
   .nav-links {
     display: none;

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
@@ -27,6 +26,11 @@ const formatCHF = (value: number) =>
     maximumFractionDigits: 0,
   }).format(value);
 
+const formatNumber = (value: number) =>
+  value.toLocaleString("de-CH", {
+    maximumFractionDigits: 1,
+  });
+
 export default function RoiPage() {
   const [leads, setLeads] = useState(40);
   const [conversion, setConversion] = useState(20);
@@ -35,20 +39,31 @@ export default function RoiPage() {
     useState<Visibility>("medium");
 
   const result = useMemo(() => {
-    const factor = visibilityFactors[visibility];
+    const visibilityFactor = visibilityFactors[visibility];
 
-    const additionalLeads = leads * factor;
-    const modeledConversion = Math.min(conversion + 1, 100);
+    // Potenzial zusätzlicher qualifizierter Anfragen
+    // durch eine verbesserte Sichtbarkeit in AI Search.
+    const additionalLeads = leads * visibilityFactor;
+
+    // Zusätzliche AI-Search-Leads werden mit einer um 25 %
+    // höheren Abschlusswahrscheinlichkeit modelliert.
+    // Deckelung bei 50 %.
+    const aiConversion = Math.min(conversion * 1.25, 50);
+
+    const additionalCustomers =
+      additionalLeads * (aiConversion / 100);
 
     const monthlyPotential =
-      additionalLeads * (modeledConversion / 100) * orderValue;
+      additionalCustomers * orderValue;
 
-    const yearlyPotential = monthlyPotential * 12;
+    const yearlyPotential =
+      monthlyPotential * 12;
 
     return {
-      factor,
+      visibilityFactor,
       additionalLeads,
-      modeledConversion,
+      aiConversion,
+      additionalCustomers,
       monthlyPotential,
       yearlyPotential,
     };
@@ -58,16 +73,13 @@ export default function RoiPage() {
     <main className="roi-page">
       <header className="roi-header">
         <div className="roi-container roi-nav">
-<Link href="/" className="roi-brand">
-  <Image
-    src="/voixero-logo.png"
-    alt="Voixero"
-    width={160}
-    height={43}
-    className="roi-logo"
-    priority
-  />
-</Link>
+          <Link href="/" className="roi-brand">
+            <img
+              src="/voixero-logo.png"
+              alt="Voixero"
+              className="roi-logo"
+            />
+          </Link>
 
           <Link href="/" className="roi-back">
             ← Zurück zu Convert
@@ -221,30 +233,27 @@ export default function RoiPage() {
 
               <div className="roi-result-grid">
                 <div>
-                  <span>Zusätzliche Anfragen</span>
+                  <span>
+                    Zusätzliche qualifizierte Anfragen
+                  </span>
+
                   <strong>
-                    +
-                    {result.additionalLeads.toLocaleString(
-                      "de-CH",
-                      {
-                        maximumFractionDigits: 1,
-                      }
-                    )}
+                    +{formatNumber(result.additionalLeads)}
                   </strong>
+
                   <small>pro Monat</small>
                 </div>
 
                 <div>
-                  <span>Modellierte Abschlussquote</span>
+                  <span>
+                    Geschätzte zusätzliche Kunden
+                  </span>
+
                   <strong>
-                    {result.modeledConversion.toLocaleString(
-                      "de-CH"
-                    )}
-                    %
+                    +{formatNumber(result.additionalCustomers)}
                   </strong>
-                  <small>
-                    heute {conversion.toLocaleString("de-CH")} %
-                  </small>
+
+                  <small>pro Monat</small>
                 </div>
               </div>
 
@@ -252,38 +261,55 @@ export default function RoiPage() {
                 <strong>So entsteht die Schätzung</strong>
 
                 <p>
-                  Auf Basis Ihrer heutigen KI-Sichtbarkeit
-                  modellieren wir ein zusätzliches Lead-Potenzial
-                  von{" "}
+                  Aufgrund Ihrer angegebenen heutigen
+                  KI-Sichtbarkeit modellieren wir ein zusätzliches
+                  Potenzial qualifizierter Anfragen von{" "}
                   <strong>
-                    {Math.round(result.factor * 100)} %
+                    {Math.round(
+                      result.visibilityFactor * 100
+                    )} %
                   </strong>
-                  . Für die Berechnung wird zusätzlich ein
-                  Conversion-Hebel von einem Prozentpunkt
-                  berücksichtigt.
+                  .
+                </p>
+
+                <p>
+                  Für zusätzliche Anfragen aus AI Search wird eine
+                  modellierte Abschlussquote von{" "}
+                  <strong>
+                    {formatNumber(result.aiConversion)} %
+                  </strong>{" "}
+                  verwendet. Ihre heutige Abschlussquote beträgt{" "}
+                  <strong>
+                    {formatNumber(conversion)} %
+                  </strong>
+                  .
                 </p>
               </div>
 
               <div className="roi-formula">
                 <span>
-                  {leads} Leads ×{" "}
-                  {Math.round(result.factor * 100)} %
+                  {formatNumber(result.additionalLeads)} zusätzliche
+                  Leads
                 </span>
-                <span>→</span>
+
+                <span>×</span>
+
                 <span>
-                  {result.additionalLeads.toLocaleString("de-CH", {
-                    maximumFractionDigits: 1,
-                  })}{" "}
-                  zusätzliche Leads
+                  {formatNumber(result.aiConversion)} % Abschluss
                 </span>
+
+                <span>×</span>
+
+                <span>{formatCHF(orderValue)}</span>
               </div>
 
               <div className="roi-disclaimer">
                 Die Berechnung stellt eine modellierte
-                Potenzialanalyse dar. Tatsächliche Ergebnisse hängen
-                unter anderem von Markt, Angebot, Wettbewerb,
-                Website und Vertriebsprozess ab. Es besteht keine
-                Umsatz- oder Leadgarantie.
+                Potenzialanalyse dar und dient der Orientierung.
+                Tatsächliche Ergebnisse hängen unter anderem von
+                Markt, Angebot, Wettbewerb, Website,
+                KI-Sichtbarkeit und Vertriebsprozess ab. Es besteht
+                keine Umsatz-, Lead- oder Abschlussgarantie.
               </div>
             </div>
           </div>
@@ -310,9 +336,16 @@ export default function RoiPage() {
             </div>
 
             <div className="roi-trial-offer">
-              <span>Convert Business Trial · 3 Monate</span>
+              <span>
+                Convert Business Trial · 3 Monate
+              </span>
+
               <strong>CHF 448.–</strong>
-              <small>inkl. einmaligem Setup · zzgl. MwSt. · keine automatische Verlängerun</small>
+
+              <small>
+                inkl. einmaligem Setup · zzgl. MwSt. · keine
+                automatische Verlängerung
+              </small>
 
               <Link href="/#kontakt">
                 Business Trial starten →
